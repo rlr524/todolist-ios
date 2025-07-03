@@ -9,53 +9,57 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    @State private var results = [Result]()
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        Text("Hello, Madison")
+        List(results, id: \.trackId) { item in
+            VStack(alignment: .leading) {
+                Text(item.trackName)
+                    .font(.headline)
+                Text(item.collectionName)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
+        }
+        .task {
+            await loadData()
         }
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
+    
+    func loadData() async {
+        guard let url = URL(string: "https://itunes.apple.com/search?term=taylor+swift&entity=song") else {
+            print("Invalid URL")
+            return
         }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("tbd", forHTTPHeaderField: "x-api-key")
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(for: urlRequest)
+            
+            if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
+                results = decodedResponse.results
             }
+            
+            print(results.count)
+        } catch {
+            print("Invalid data")
         }
     }
 }
 
+
+struct Response: Codable {
+    var results: [Result]
+}
+
+struct Result: Codable {
+    var trackId: Int
+    var trackName: String
+    var collectionName: String
+}
+
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }

@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D4DB39022E162483009D889D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4DB38FD2E162483009D889D /* Assets.xcassets */; };
+		D4DB39032E162483009D889D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB38FE2E162483009D889D /* ContentView.swift */; };
+		D4DB39042E162483009D889D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB38FF2E162483009D889D /* Item.swift */; };
+		D4DB39052E162483009D889D /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB39002E162483009D889D /* ToDoListApp.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		D4DB38E12E16247B009D889D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,14 +34,13 @@
 		D4DB38D12E16247A009D889D /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4DB38E02E16247B009D889D /* ToDoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4DB38EA2E16247B009D889D /* ToDoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4DB38FD2E162483009D889D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D4DB38FE2E162483009D889D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D4DB38FF2E162483009D889D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		D4DB39002E162483009D889D /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D4DB38D32E16247A009D889D /* ToDoList */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ToDoList;
-			sourceTree = "<group>";
-		};
 		D4DB38E32E16247B009D889D /* ToDoListTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ToDoListTests;
@@ -75,7 +81,7 @@
 		D4DB38C82E16247A009D889D = {
 			isa = PBXGroup;
 			children = (
-				D4DB38D32E16247A009D889D /* ToDoList */,
+				D4DB39012E162483009D889D /* ToDoList */,
 				D4DB38E32E16247B009D889D /* ToDoListTests */,
 				D4DB38ED2E16247B009D889D /* ToDoListUITests */,
 				D4DB38D22E16247A009D889D /* Products */,
@@ -92,6 +98,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D4DB39012E162483009D889D /* ToDoList */ = {
+			isa = PBXGroup;
+			children = (
+				D4DB38FD2E162483009D889D /* Assets.xcassets */,
+				D4DB38FE2E162483009D889D /* ContentView.swift */,
+				D4DB38FF2E162483009D889D /* Item.swift */,
+				D4DB39002E162483009D889D /* ToDoListApp.swift */,
+			);
+			path = ToDoList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +123,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				D4DB38D32E16247A009D889D /* ToDoList */,
 			);
 			name = ToDoList;
 			packageProductDependencies = (
@@ -212,6 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4DB39022E162483009D889D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +251,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4DB39032E162483009D889D /* ContentView.swift in Sources */,
+				D4DB39042E162483009D889D /* Item.swift in Sources */,
+				D4DB39052E162483009D889D /* ToDoListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +423,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -412,6 +431,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.emiyaconsulting.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -433,6 +456,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,6 +464,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.emiyaconsulting.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
