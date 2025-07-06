@@ -1,0 +1,33 @@
+//
+//  Constants.swift
+//  ToDoList
+//
+//  Created by Rob Ranf on 7/5/25.
+//
+
+import Foundation
+import SwiftUI
+
+struct K {
+    static let environment: String = "dev"
+    static let version: String = "v1"
+    static let devBaseURL: String = "http://localhost:3000/api/\(version)"
+    static let prodBaseURL: String = ""
+    static let baseUrl: URL = URL(filePath: environment == "dev" ? devBaseURL : prodBaseURL)
+    
+    struct URLs {
+        static let items = URL(filePath: "\(baseUrl)/items")
+        
+        static func getItemById(id: String) -> URL {
+            URL(filePath: "\(baseUrl)/item/\(id)")
+        }
+        
+        static func createOrUpdateItem() -> URL {
+            URL(filePath: "\(baseUrl)/item")
+        }
+        
+        static func deleteItem(id: String) -> URL {
+            URL(filePath: "\(baseUrl)/item/\(id)")
+        }
+    }
+}
