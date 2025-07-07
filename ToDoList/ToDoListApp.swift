@@ -10,9 +10,11 @@ import SwiftData
 
 @main
 struct ToDoListApp: App {
+    @State private var store = Store(webService: WebService())
+    
     var body: some Scene {
         WindowGroup {
             ListHomeView()
-        }
+        }.environment(store)
     }
 }

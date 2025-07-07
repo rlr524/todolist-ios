@@ -19,7 +19,7 @@ struct Item: Codable, Identifiable, Hashable {
     var id: String
     var title: String
     var description: String
-    var due: Date
+    var due: String
     var importance: ItemImportance
     var complete: Bool
     var owner: String

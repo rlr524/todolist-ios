@@ -35,7 +35,7 @@ extension NetworkError: LocalizedError {
 }
 
 enum HTTPMethod {
-    case get([URLQueryItem])
+    case get
     case post(Data?)
     case delete
     case put(Data?)
@@ -56,7 +56,7 @@ enum HTTPMethod {
 
 struct Resource<T: Codable> {
     let url: URL
-    var method: HTTPMethod = .get([])
+    var method: HTTPMethod = .get
     var headers: [String: String]? = nil
     var dataType: T.Type
 }
@@ -79,9 +79,8 @@ struct WebService: HttpClient {
         
         // Set HTTP method and body as needed
         switch resource.method {
-        case .get(let queryItems):
-            var components = URLComponents(url: resource.url, resolvingAgainstBaseURL: false)
-            components?.queryItems = queryItems
+        case .get:
+            let components = URLComponents(url: resource.url, resolvingAgainstBaseURL: false)
             guard let url = components?.url else {
                 throw NetworkError.badRequest
             }
@@ -97,7 +96,7 @@ struct WebService: HttpClient {
         
         // Set custom headers
         if let headers = resource.headers {
-            for (k, v) in headers {
+            for (v, k) in headers {
                 request.setValue(v, forHTTPHeaderField: k)
             }
         }

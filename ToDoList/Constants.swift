@@ -13,21 +13,27 @@ struct K {
     static let version: String = "v1"
     static let devBaseURL: String = "http://localhost:3000/api/\(version)"
     static let prodBaseURL: String = ""
-    static let baseUrl: URL = URL(filePath: environment == "dev" ? devBaseURL : prodBaseURL)
+    static let baseUrl: String = environment == "dev" ? devBaseURL : prodBaseURL
     
     struct URLs {
-        static let items = URL(filePath: "\(baseUrl)/items")
-        
-        static func getItemById(id: String) -> URL {
-            URL(filePath: "\(baseUrl)/item/\(id)")
+        static func getItems() -> URL {
+            return URL(filePath: "\(baseUrl)/items")
         }
         
-        static func createOrUpdateItem() -> URL {
-            URL(filePath: "\(baseUrl)/item")
+        static func getItemById(id: String) -> URL {
+            return URL(filePath: "\(baseUrl)/item/\(id)")
+        }
+        
+        static func createItem() -> URL {
+            return URL(filePath: "\(baseUrl)/item")
+        }
+        
+        static func updateItem() -> URL {
+            return URL(filePath: "\(baseUrl)/item")
         }
         
         static func deleteItem(id: String) -> URL {
-            URL(filePath: "\(baseUrl)/item/\(id)")
+            return URL(filePath: "\(baseUrl)/item/\(id)")
         }
     }
 }

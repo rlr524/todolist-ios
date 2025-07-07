@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct ListHomeView: View {
+    @Environment(Store.self) private var store
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(store.items) {item in
+            Text(item.title)
+        }.task {
+            do {
+                try await store.loadItems()
+            } catch {
+                print(error)
+            }
+        }
     }
 }
 
 #Preview {
-    ListHomeView()
+    ListHomeView().environment(Store(webService: WebService()))
 }
