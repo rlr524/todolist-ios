@@ -17,23 +17,23 @@ struct K {
     
     struct URLs {
         static func getItems() -> URL {
-            return URL(filePath: "\(baseUrl)/items")
+            return URL(string: "\(baseUrl)/items")!
         }
         
         static func getItemById(id: String) -> URL {
-            return URL(filePath: "\(baseUrl)/item/\(id)")
+            return URL(string: "\(baseUrl)/item/\(id)")!
         }
         
         static func createItem() -> URL {
-            return URL(filePath: "\(baseUrl)/item")
+            return URL(string: "\(baseUrl)/item")!
         }
         
         static func updateItem() -> URL {
-            return URL(filePath: "\(baseUrl)/item")
+            return URL(string: "\(baseUrl)/item")!
         }
         
         static func deleteItem(id: String) -> URL {
-            return URL(filePath: "\(baseUrl)/item/\(id)")
+            return URL(string: "\(baseUrl)/item/\(id)")!
         }
     }
 }

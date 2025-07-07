@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 
 enum ItemImportance: String, Codable, CaseIterable, Identifiable {
     case low = "Low"

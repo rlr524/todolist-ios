@@ -24,4 +24,8 @@ class Store {
                                 dataType: [Item].self)
         items = try await webService.load(resource)
     }
+    
+    func newItem() async throws {
+        
+    }
 }
