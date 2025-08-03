@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct AddHomeView: View {
+    @ObservedObject var item: Item
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Form {
+            Section {
+                VStack(alignment: .leading) {
+                    TextField("Title", text: $item.title,
+                              prompt: Text("Enter the todo item title here"))
+                        .font(.title)
+                    TextField("Description", text: $item.itemDescription,
+                              prompt: Text("Enter the todo item description here"))
+                        .font(.title)
+                }
+            }
+        }
     }
 }
 
-#Preview {
-    AddHomeView()
-}
+//#Preview {
+//    AddHomeView()
+//}
