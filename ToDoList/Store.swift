@@ -20,7 +20,6 @@ class Store {
     func loadItems() async throws {
         let resource = Resource(url: K.URLs.getItems(),
                                 method: .get,
-                                headers: ["nazdub-maDnin-6qindy": "x-api-key"],
                                 dataType: [Item].self)
         items = try await webService.load(resource)
     }

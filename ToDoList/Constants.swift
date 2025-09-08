@@ -11,7 +11,7 @@ import SwiftUI
 struct K {
     static let environment: String = "dev"
     static let version: String = "v1"
-    static let devBaseURL: String = "http://localhost:3000/api/\(version)"
+    static let devBaseURL: String = "http://localhost:8080"
     static let prodBaseURL: String = ""
     static let baseUrl: String = environment == "dev" ? devBaseURL : prodBaseURL
     
