@@ -4,6 +4,8 @@
 //
 //  Created by Rob Ranf on 7/4/25.
 //
+// The WebService file contains all networking code for the application.
+//
 
 import Foundation
 
