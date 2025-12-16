@@ -11,9 +11,9 @@ import SwiftUI
 struct K {
     static let environment: String = "dev"
     static let version: String = "v1"
-    static let devBaseURL: String = "http://localhost:8080"
+    static let devBaseURL: String = "http://localhost:8080/api/"
     static let prodBaseURL: String = ""
-    static let baseUrl: String = environment == "dev" ? devBaseURL : prodBaseURL
+    static let baseUrl: String = environment == "dev" ? (devBaseURL + version) : (prodBaseURL + version)
     
     struct URLs {
         static func getItems() -> URL {

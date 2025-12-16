@@ -6,11 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
+
+struct Response: Codable {
+    var results: [Item]
+}
+
 
 struct ListHomeView: View {
     @Environment(Store.self) private var store
     
     var body: some View {
+        Text("Hello, Madison")
         List(store.items) {item in
             Text(item.title)
         }.task {
@@ -23,6 +30,8 @@ struct ListHomeView: View {
     }
 }
 
+
 #Preview {
     ListHomeView().environment(Store(webService: WebService()))
 }
+
