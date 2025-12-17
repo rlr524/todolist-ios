@@ -14,7 +14,7 @@ struct ToDoListApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ListHomeView()
+            ContentView()
         }.environment(store)
     }
 }
