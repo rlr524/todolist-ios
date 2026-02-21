@@ -4,8 +4,8 @@
 //
 //  Created by Rob Ranf on 7/4/25.
 //
-// The HTTPClient file is a protocol that includes any code specific to creating the network
-// connectivity code.
+//  The HTTPClient file is a protocol that includes any code specific to creating the network
+//  connectivity code.
 //
 
 import Foundation

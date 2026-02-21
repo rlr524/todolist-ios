@@ -13,7 +13,7 @@ struct Response: Codable {
 
 struct ContentView: View {
     @State private var showingAddForm = false
-    @Environment(Store.self) private var store
+    @Environment(Store.self) var store
     
     var body: some View {
         List(store.items) {item in
@@ -50,5 +50,10 @@ struct ContentView: View {
             )
         }
     }
+}
+
+#Preview {
+    ContentView()
+        .environment(Store(webService: WebService()))
 }
 

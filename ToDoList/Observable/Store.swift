@@ -94,7 +94,7 @@ class Store {
     
     /// Creates a new to-do item.
     ///
-    /// - Note: This method is not yet implemented.
+    /// - Note: This method is not ter implemented.
     ///
     /// - Throws: An error if the item creation fails.
     func newItem() async throws {
