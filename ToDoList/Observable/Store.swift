@@ -94,10 +94,42 @@ class Store {
     
     /// Creates a new to-do item.
     ///
-    /// - Note: This method is not ter implemented.
+    /// This method encodes the provided item, sends it to the server via a POST request,
+    /// and adds the returned item to the local ``items`` collection.
     ///
-    /// - Throws: An error if the item creation fails.
-    func newItem() async throws {
+    /// - Parameter item: The item to create on the server.
+    /// - Returns: The created item as returned by the server.
+    /// - Throws: An error if the network request fails, encoding fails, or the response cannot be decoded.
+    ///
+    /// ## Example
+    ///
+    /// ```swift
+    /// let newItem = Item(
+    ///     id: UUID().uuidString,
+    ///     title: "New Task",
+    ///     itemDescription: "Description",
+    ///     due: "2025-12-31",
+    ///     importance: .medium,
+    ///     complete: false,
+    ///     owner: "user@example.com",
+    ///     deleted: false
+    /// )
+    /// let createdItem = try await store.newItem(newItem)
+    /// ```
+    @discardableResult
+    func newItem(_ item: Item) async throws -> Item {
+        let encoder = JSONEncoder()
+        let itemData = try encoder.encode(item)
         
+        let resource = Resource(
+            url: K.URLs.createItem(),
+            method: .post(itemData),
+            dataType: Item.self
+        )
+        
+        let createdItem = try await webService.create(resource)
+        items.append(createdItem)
+        
+        return createdItem
     }
 }
